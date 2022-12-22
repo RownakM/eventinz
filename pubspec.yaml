@@ -40,6 +40,7 @@ dependencies:
   colorful_safe_area: ^0.3.0
 
   flutter_native_splash: ^2.2.16
+  gap: ^2.0.1
 
 dev_dependencies:
   flutter_test:
