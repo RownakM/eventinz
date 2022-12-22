@@ -1,5 +1,6 @@
 import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
 import 'package:eventinz/Screens/splash.dart';
+import 'package:eventinz/Screens/user_dashboard_main.dart';
 import 'package:eventinz/start.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Start(),
+      home: const UserDashboardMain(),
     );
   }
 }

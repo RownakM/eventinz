@@ -41,6 +41,8 @@ dependencies:
 
   flutter_native_splash: ^2.2.16
   gap: ^2.0.1
+  persistent_bottom_nav_bar: ^5.0.2
+  ionicons: ^0.2.1
 
 dev_dependencies:
   flutter_test:

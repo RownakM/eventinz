@@ -51,6 +51,7 @@ class _StartState extends State<Start> {
                           children: [
                             TextFormField(
                               cursorColor: Colors.black45,
+                              cursorWidth: 1,
                               decoration: const InputDecoration(
                                   hintText: "Email",
                                   focusedBorder: OutlineInputBorder(
@@ -64,6 +65,7 @@ class _StartState extends State<Start> {
                             ),
                             Gap(10),
                             TextFormField(
+                              cursorWidth: 1,
                               cursorColor: Colors.black45,
                               obscureText: true,
                               decoration: const InputDecoration(
