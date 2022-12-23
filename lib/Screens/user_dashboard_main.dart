@@ -1,7 +1,13 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/Screens/Page_Screens/chat_page.dart';
+import 'package:eventinz/Screens/Page_Screens/dashboard.dart';
+import 'package:eventinz/Screens/Page_Screens/my_event.dart';
+import 'package:eventinz/Screens/Page_Screens/support_page.dart';
+import 'package:eventinz/Screens/Page_Screens/user_statistics.dart';
 import 'package:eventinz/custom_fonts/custom_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -22,17 +28,18 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
             child: PersistentTabView(
               context,
               screens: screens(),
+              controller: PersistentTabController(initialIndex: 2),
               items: navBarItems(),
-              navBarStyle: NavBarStyle.style13,
+              navBarStyle: NavBarStyle.style6,
             )));
   }
 
   List<Widget> screens() {
     return [
-      HomePage(),
-      ChatPage(),
-      ChatPage(),
-      ChatPage(),
+      UserStatistics(),
+      MyEvent(),
+      Dashboard(),
+      SupportPage(),
       ChatPage(),
     ];
   }
@@ -41,52 +48,34 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
     return [
       PersistentBottomNavBarItem(
           icon: const Icon(Ionicons.stats_chart),
-          title: "User Statistics",
-          textStyle: TextFont,
+          title: "Statistics",
+          textStyle: iconFont,
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: Colors.black45),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.calendar_month_outlined),
           title: "My Events",
-          textStyle: TextFont,
+          textStyle: iconFont,
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: Colors.black45),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.dashboard_outlined),
           title: "Dashboard",
-          textStyle: TextFont,
+          textStyle: iconFont,
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: Colors.black45),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.support),
           title: "Support",
-          textStyle: TextFont,
+          textStyle: iconFont,
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: Colors.black45),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.chat_outlined),
           title: "My Chats",
-          textStyle: TextFont,
+          textStyle: iconFont,
           activeColorPrimary: primaryColor,
           inactiveColorPrimary: Colors.black45)
     ];
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }

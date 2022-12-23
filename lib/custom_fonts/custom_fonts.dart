@@ -12,3 +12,5 @@ var TitleFont = GoogleFonts.roboto(
 
 var TextFont = GoogleFonts.roboto(
     textStyle: TextStyle(fontWeight: FontWeight.w300, fontSize: 13));
+var iconFont = GoogleFonts.roboto(
+    textStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 10));

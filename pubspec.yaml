@@ -43,6 +43,7 @@ dependencies:
   gap: ^2.0.1
   persistent_bottom_nav_bar: ^5.0.2
   ionicons: ^0.2.1
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
