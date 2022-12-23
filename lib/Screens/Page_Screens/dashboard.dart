@@ -35,6 +35,6 @@ class Dashboard extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        body: DashboardBody());
+        body: SingleChildScrollView(child: DashboardBody()));
   }
 }

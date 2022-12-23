@@ -42,14 +42,21 @@ dependencies:
   flutter_native_splash: ^2.2.16
   gap: ^2.0.1
   persistent_bottom_nav_bar: ^5.0.2
-  ionicons: ^0.2.1
+  
   http: ^0.13.5
+  flutter_session_manager: ^1.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
+  flutter_launcher_icons: ^0.11.0
+flutter_icons:
+  android: true
+  adaptive_icon_background: "#ffffff"
+  # ios: true
+  image_path: "assets/images/brand_logo_4x.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  
 flutter_native_splash:
   # This package generates native code to customize Flutter's default white native splash screen
   # with background color and splash image.

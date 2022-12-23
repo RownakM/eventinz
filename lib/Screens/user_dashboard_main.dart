@@ -8,7 +8,7 @@ import 'package:eventinz/Screens/Page_Screens/user_statistics.dart';
 import 'package:eventinz/custom_fonts/custom_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ionicons/ionicons.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class UserDashboardMain extends StatefulWidget {
@@ -24,7 +24,7 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: ColorfulSafeArea(
-            color: primaryColor,
+            color: primaryColor.withOpacity(0.5),
             child: PersistentTabView(
               context,
               screens: screens(),
@@ -47,7 +47,7 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
   List<PersistentBottomNavBarItem> navBarItems() {
     return [
       PersistentBottomNavBarItem(
-          icon: const Icon(Ionicons.stats_chart),
+          icon: const Icon(Icons.bar_chart_outlined),
           title: "Statistics",
           textStyle: iconFont,
           activeColorPrimary: primaryColor,

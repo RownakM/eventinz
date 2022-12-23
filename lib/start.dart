@@ -1,9 +1,12 @@
 import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/Screens/user_dashboard_main.dart';
 import 'package:eventinz/base_client/network_conn.dart';
 import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/main.dart';
 import 'package:eventinz/models/model_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
@@ -111,6 +114,15 @@ class _StartState extends State<Start> {
                                   debugPrint('successfull');
                                   var data = baseTextFromJson(response);
                                   debugPrint(data.status.toString());
+                                  if (data.status.toString() == "200") {
+                                    await SessionManager()
+                                        .set('token', "Loggedin");
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                UserDashboardMain()));
+                                  }
                                 },
                                 child: Text(
                                   "Login",

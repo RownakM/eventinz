@@ -1,10 +1,13 @@
 import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/Screens/Page_Screens/dashboard.dart';
 import 'package:eventinz/Screens/splash.dart';
 import 'package:eventinz/Screens/user_dashboard_main.dart';
 import 'package:eventinz/start.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session_manager/flutter_session_manager.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -14,6 +17,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    dynamic token = SessionManager().get('token');
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
         // primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: const UserDashboardMain(),
+      home: token != '' ? UserDashboardMain() : Start(),
     );
   }
 }
