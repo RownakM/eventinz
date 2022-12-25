@@ -2,42 +2,72 @@ import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
 import 'package:eventinz/Screens/Page_Screens/dashboard.dart';
 import 'package:eventinz/Screens/splash.dart';
 import 'package:eventinz/Screens/user_dashboard_main.dart';
-import 'package:eventinz/start.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_session_manager/flutter_session_manager.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+import 'package:eventinz/start.dart';
+// import 'package:eventinz/storage/StorageItem.dart';
+import 'package:flutter/material.dart';
+// import 'package:flutter_session_manager/flutter_session_manager.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+// import 'package:session_next/session_next.dart';
+import 'package:get_storage/get_storage.dart';
+
+void main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
+  initList();
+
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+void initList() async {
+  // final _storage = StorageService();
+  // var _username = await _storage.readSecureData('KEY_USERNAME');
+  var session = GetStorage();
+  var _username = session.read(
+        'KEY_USERNAME',
+      ) ??
+      '';
+
+  debugPrint(_username);
+}
+
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  // initList();
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var _username = '';
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    dynamic token = SessionManager().get('token');
+    // debugPrint(token);
+    print(_username);
+    // initList();
 
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // Try running your application with "flutter run". You'll see the
+          // application has a blue toolbar. Then, without quitting the app, try
+          // changing the primarySwatch below to Colors.green and then invoke
+          // "hot reload" (press "r" in the console where you ran "flutter run",
+          // or simply save your changes to "hot reload" in a Flutter IDE).
+          // Notice that the counter didn't reset back to zero; the application
+          // is not restarted.
 
-        primaryColor: primaryColor,
-        // primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: token != '' ? UserDashboardMain() : Start(),
-    );
+          primaryColor: primaryColor,
+          // primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        home:
+            _username != '' ? UserDashboardMain(userName: _username) : Start());
   }
 }
 
