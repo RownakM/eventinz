@@ -50,6 +50,7 @@ dependencies:
 
   intl: ^0.18.0
   json_serializable: ^6.5.4
+  flutter_expandable_fab: ^1.6.1
 
 
 dev_dependencies:

@@ -8,6 +8,7 @@ import 'package:eventinz/Screens/Page_Screens/user_statistics.dart';
 import 'package:eventinz/Services/http_service.dart';
 import 'package:eventinz/custom_fonts/custom_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -26,15 +27,41 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
     //     "usersLogin/?email=christianadegbola@gmail.com&password=eventinz"));
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        body: ColorfulSafeArea(
-            color: primaryColor.withOpacity(0.5),
-            child: PersistentTabView(
-              context,
-              screens: screens(),
-              controller: PersistentTabController(initialIndex: 2),
-              items: navBarItems(),
-              navBarStyle: NavBarStyle.style6,
-            )));
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          shadowColor: Colors.white,
+          elevation: 0,
+          actions: [
+            GestureDetector(
+              onTap: () {},
+              child: Container(
+                padding: EdgeInsets.only(right: 10),
+                child: CircleAvatar(
+                  backgroundColor: primaryColor,
+                  child: Text(
+                    "R",
+                    style: TextFont.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20),
+                  ),
+                ),
+              ),
+            )
+          ],
+          leading: IconButton(
+            icon: Image.network(
+                "https://eventinz.com/static/main_home1/assets/images/logo-footer.png"),
+            onPressed: () {},
+          ),
+        ),
+        body: PersistentTabView(
+          context,
+          screens: screens(),
+          controller: PersistentTabController(initialIndex: 2),
+          items: navBarItems(),
+          navBarStyle: NavBarStyle.style6,
+        ));
   }
 
   List<Widget> screens() {

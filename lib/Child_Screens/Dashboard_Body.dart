@@ -41,6 +41,7 @@ class _DashboardBodyState extends State<DashboardBody> {
 
   List<dynamic> users = [];
   List<dynamic> Quotes = [];
+  List<dynamic> EventData = [];
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
     var url =
@@ -65,6 +66,7 @@ class _DashboardBodyState extends State<DashboardBody> {
         _isLoading = false;
         _isRequestQuote = false;
         Quotes = json["quote"];
+        EventData = json['event_data'];
         FName = json['data'][0]['fname'];
         LName = json['data'][0]['lname'][0];
         String date = json['data'][0]['created_on'];
@@ -72,6 +74,8 @@ class _DashboardBodyState extends State<DashboardBody> {
         MemberSince = DateFormat("dd-MM-yyyy").format(formattedate);
         AboutMe = json['data'][0]['aboutme'];
         userLocation = json['data'][0]['country'];
+        ImageURL =
+            "https://eventinz.com/media/" + json['data'][0]['profile_image'];
       });
     }));
 
@@ -97,21 +101,21 @@ class _DashboardBodyState extends State<DashboardBody> {
         makeRequestUsingHttp(widget.userName);
       },
       color: primaryColor,
-      child: ListView(children: [
-        Container(
-          color: Colors.grey.shade100,
-          // height: MediaQuery.of(context).size.height,
-          child: _isLoading
-              ? const Center(
-                  child: SizedBox(
-                    width: 20,
-                    height: 20,
-                    child: CircularProgressIndicator(
-                      color: Colors.purple,
-                    ),
+      child: _isLoading
+          ? Center(
+              child: Container(
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    color: Color.fromRGBO(159, 0, 126, 1),
                   ),
-                )
-              : Column(
+                ),
+              ),
+            )
+          : ListView(children: [
+              Container(
+                color: Colors.grey.shade100,
+                // height: MediaQuery.of(context).size.height,
+                child: Column(
                   children: [
                     Stack(fit: StackFit.loose, children: [
                       Row(
@@ -144,18 +148,18 @@ class _DashboardBodyState extends State<DashboardBody> {
                                           color: Colors.transparent,
                                           child: Row(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                                MainAxisAlignment.end,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
                                             children: [
-                                              Text(
-                                                FName + ' ' + LName,
-                                                style: Heading.copyWith(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 17),
-                                                textAlign: TextAlign.center,
-                                              ),
+                                              // Text(
+                                              //   FName + ' ' + LName,
+                                              //   style: Heading.copyWith(
+                                              //       color: Colors.white,
+                                              //       fontWeight: FontWeight.w500,
+                                              //       fontSize: 17),
+                                              //   textAlign: TextAlign.center,
+                                              // ),
                                               TextButton(
                                                   onPressed: () {
                                                     makeRequestUsingHttp(
@@ -211,17 +215,16 @@ class _DashboardBodyState extends State<DashboardBody> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Icon(
-                                            Icons.location_on_outlined,
+                                            Icons.person,
                                             color: Color(0xFF525252),
                                           ),
+                                          Gap(5),
                                           Text(
-                                            "From : ",
-                                            style:
-                                                Heading.copyWith(fontSize: 13),
-                                          ),
-                                          Text(
-                                            session.read('KEY_PASSWORD'),
-                                            style: Heading,
+                                            // session.read('KEY_PASSWORD'),
+                                            FName + ' ' + LName,
+                                            style: Heading.copyWith(
+                                                fontSize: 19,
+                                                fontWeight: FontWeight.w700),
                                           )
                                         ],
                                       ),
@@ -279,9 +282,12 @@ class _DashboardBodyState extends State<DashboardBody> {
                             // color: Colors.white,
                             padding: EdgeInsets.all(15),
 
-                            child: Image.network(
-                              ImageURL,
-                              fit: BoxFit.fill,
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: Image.network(
+                                ImageURL,
+                                fit: BoxFit.fill,
+                              ),
                             ),
                           ),
                         ),
@@ -348,7 +354,9 @@ class _DashboardBodyState extends State<DashboardBody> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Quote Request (0)",
+                                "Quote Request (" +
+                                    Quotes.length.toString() +
+                                    ")",
                                 style: TitleFont.copyWith(fontSize: 23),
                               ),
                               TextButton(
@@ -395,10 +403,19 @@ class _DashboardBodyState extends State<DashboardBody> {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return Container(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 4),
                                       child: QuoteRequestCard(
                                         VendorID: Quotes[index]["vendor_id"]
+                                                ['company_name']
                                             .toString(),
                                         Message: Quotes[index]["msg"],
+                                        event_type: Quotes[index]['event_type'],
+                                        status: Quotes[index]['status'],
+                                        number_of_guest: Quotes[index]
+                                            ['no_of_guests'],
+                                        Quote_Date: Quotes[index]['appx_date'],
+                                        created_at: Quotes[index]['created_on'],
                                       ),
                                     );
                                   },
@@ -425,50 +442,83 @@ class _DashboardBodyState extends State<DashboardBody> {
                       padding:
                           EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                       alignment: Alignment.centerLeft,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Events",
-                            style: TitleFont.copyWith(fontSize: 23),
-                          ),
-                          Gap(10),
-                          Row(
+                      child: ListView.builder(
+                        itemCount: 1,
+                        scrollDirection: Axis.vertical,
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              EventCardsIndex(
-                                text: "Total Events",
-                                Count: "0",
-                                ColorCode: primaryColor,
+                              Text(
+                                "Events",
+                                style: TitleFont.copyWith(fontSize: 23),
                               ),
-                              EventCardsIndex(
-                                text: "Total Events",
-                                Count: "0",
-                                ColorCode: secondaryColor,
+                              Gap(10),
+                              Row(
+                                children: [
+                                  EventCardsIndex(
+                                    text: "Total Events",
+                                    Count: EventData[0]['total_event_count']
+                                        .toString(),
+                                    ColorCode: primaryColor,
+                                  ),
+                                  EventCardsIndex(
+                                    text: "OnGoing Events",
+                                    Count: EventData[0]['ongoing_event_count']
+                                        .toString(),
+                                    ColorCode: secondaryColor,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  EventCardsIndex(
+                                    text: "Cancelled Events",
+                                    Count: EventData[0]['cancel_event_count']
+                                        .toString(),
+                                    ColorCode: GreenColor,
+                                  ),
+                                  EventCardsIndex(
+                                    text: "Archieved Events",
+                                    Count: EventData[0]['cancel_event_count']
+                                        .toString(),
+                                    ColorCode: primaryColor,
+                                  ),
+                                ],
                               ),
                             ],
-                          ),
-                          Row(
-                            children: [
-                              EventCardsIndex(
-                                text: "Total Events",
-                                Count: "0",
-                                ColorCode: GreenColor,
-                              ),
-                              EventCardsIndex(
-                                text: "Total Events",
-                                Count: "0",
-                                ColorCode: primaryColor,
-                              ),
-                            ],
-                          ),
-                        ],
+                          );
+                        },
                       ),
                     ),
+                    Gap(30),
+                    Center(
+                      child: Container(
+                          child: Image.network(
+                        "https://eventinz.com/static/main_home1/assets/images/logo-desktop.png",
+                        color: Color.fromRGBO(255, 255, 255, 0.2),
+                        width: 120,
+                        colorBlendMode: BlendMode.modulate,
+                      )),
+                    ),
+                    Gap(10),
+                    Center(
+                      child: Container(
+                          child: Text(
+                        "© Eventinz - ITTIQ | Canada",
+                        style: Heading.copyWith(
+                            color: Color.fromRGBO(0, 0, 0, 0.2),
+                            fontWeight: FontWeight.bold),
+                      )),
+                    ),
+                    Gap(30)
                   ],
                 ),
-        ),
-      ]),
+              ),
+            ]),
     );
   }
 
