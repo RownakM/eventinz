@@ -425,7 +425,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                       ),
                                     );
                                   },
-                                  itemCount: 3,
+                                  itemCount: Quotes.length,
                                 )
                         ],
                       ),
