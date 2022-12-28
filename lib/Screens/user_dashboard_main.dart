@@ -67,7 +67,9 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
   List<Widget> screens() {
     return [
       UserStatistics(),
-      MyEvent(),
+      MyEvent(
+        userName: widget.userName,
+      ),
       Dashboard(
         userName: widget.userName,
       ),
@@ -79,11 +81,12 @@ class _UserDashboardMainState extends State<UserDashboardMain> {
   List<PersistentBottomNavBarItem> navBarItems() {
     return [
       PersistentBottomNavBarItem(
-          icon: const Icon(Icons.bar_chart_outlined),
-          title: "Statistics",
-          textStyle: iconFont,
-          activeColorPrimary: primaryColor,
-          inactiveColorPrimary: Colors.black45),
+        icon: const Icon(Icons.bar_chart_outlined),
+        title: "Statistics",
+        textStyle: iconFont,
+        activeColorPrimary: primaryColor,
+        inactiveColorPrimary: Colors.black45,
+      ),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.calendar_month_outlined),
           title: "My Events",

@@ -201,7 +201,7 @@ class _StartState extends State<Start> {
               userName: Username,
             ),
             withNavBar: false,
-            pageTransitionAnimation: PageTransitionAnimation.cupertino);
+            pageTransitionAnimation: PageTransitionAnimation.rotate);
       });
     } else {
       setState(() {

@@ -54,7 +54,7 @@ class QuoteRequestCard extends StatelessWidget {
                           EdgeInsets.symmetric(horizontal: 18, vertical: 8),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        color: primaryColor,
+                        color: secondaryColor.withOpacity(0.88),
                       ),
                       child: Text(
                         "${status}",

@@ -74,8 +74,14 @@ class _DashboardBodyState extends State<DashboardBody> {
         MemberSince = DateFormat("dd-MM-yyyy").format(formattedate);
         AboutMe = json['data'][0]['aboutme'];
         userLocation = json['data'][0]['country'];
-        ImageURL =
-            "https://eventinz.com/media/" + json['data'][0]['profile_image'];
+        var profile_img = json['data'][0]['profile_image'];
+        if (profile_img == "") {
+          profile_img =
+              "https://eventinz.com/static/main_home1/assets/images/logo-footer.png";
+        } else {
+          profile_img = "https://eventinz.com/media/" + profile_img;
+        }
+        ImageURL = profile_img;
       });
     }));
 
@@ -419,7 +425,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                       ),
                                     );
                                   },
-                                  itemCount: Quotes.length,
+                                  itemCount: 3,
                                 )
                         ],
                       ),
