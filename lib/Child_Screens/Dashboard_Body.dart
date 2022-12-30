@@ -44,8 +44,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   List<dynamic> EventData = [];
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
-    var url =
-        "http://18.135.170.140/userData/?email=${Username}&password=eventinz";
+    var url = "https://api.eventinz.com/userData/?email=${Username}";
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     debugPrint(url);
@@ -79,7 +78,7 @@ class _DashboardBodyState extends State<DashboardBody> {
           profile_img =
               "https://eventinz.com/static/main_home1/assets/images/logo-footer.png";
         } else {
-          profile_img = "https://eventinz.com/media/" + profile_img;
+          profile_img = "https://eventinz.com" + profile_img;
         }
         ImageURL = profile_img;
       });
@@ -89,7 +88,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   }
 
   String GetVendorCompanyName(String VendorID) {
-    var url = "http://18.135.170.140/companyName/?id=${VendorID}";
+    var url = "https://api.eventinz.com/companyName/?id=${VendorID}";
     final uri = Uri.parse(url);
     final body = '';
     final response = http.get(uri).then((value) => body == value.body);
@@ -413,7 +412,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                           EdgeInsets.symmetric(vertical: 4),
                                       child: QuoteRequestCard(
                                         VendorID: Quotes[index]["vendor_id"]
-                                                ['company_name']
+                                                ['Company_Name']
                                             .toString(),
                                         Message: Quotes[index]["msg"],
                                         event_type: Quotes[index]['event_type'],

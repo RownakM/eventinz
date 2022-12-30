@@ -172,7 +172,7 @@ class _StartState extends State<Start> {
 
   void userLogin(String Username, String Password) async {
     var url =
-        "http://18.135.170.140/checkUsers/?email=${Username}&password=${Password}";
+        "https://api.eventinz.com/checkUsers/?email=${Username}&password=${Password}";
     print(url);
     final uri = Uri.parse(url);
     final response = await http.get(uri);

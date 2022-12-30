@@ -37,16 +37,25 @@ class _MyEventState extends State<MyEvent> {
   List<dynamic> users = [];
   List<dynamic> Quotes = [];
   List<dynamic> EventData = [];
+  List<dynamic> EventList = [];
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
     // debugPrint("PRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINT");
-    // var url =
-    //     "http://18.135.170.140/userData/?email=${Username}&password=eventinz";
-    // final uri = Uri.parse(url);
-    // final response = await http.get(uri);
-    // debugPrint(url);
-    // final body = response.body;
-    // final json = jsonDecode(body);
+    var url =
+        "https://api.eventinz.com/userData/?email=${Username}&password=eventinz";
+    var uri = Uri.parse(url);
+    final response = await http.get(uri);
+    debugPrint(url);
+    final body = response.body;
+    final json = jsonDecode(body);
+
+    var eventDataURL = "https://api.eventinz.com/eventData/?email=${Username}";
+    uri = Uri.parse(eventDataURL);
+    final eventDataResponse = await http.get(uri);
+    final eventDataResponseBody = eventDataResponse.body;
+    final eventDataResponseJSON = jsonDecode(eventDataResponseBody);
+    print("NEW OUTPUT HERE");
+    print(eventDataResponseBody);
     // // print(json);
     // print(json['quote']);
 
@@ -62,7 +71,9 @@ class _MyEventState extends State<MyEvent> {
         _isLoading = false;
         _isRequestQuote = false;
         // Quotes = json["quote"];
-        // EventData = json['event_data'];
+        EventData = json['event_data'];
+        EventList = eventDataResponseJSON['event_data'];
+
         // FName = json['data'][0]['fname'];
         // LName = json['data'][0]['lname'][0];
         // String date = json['data'][0]['created_on'];
@@ -79,7 +90,7 @@ class _MyEventState extends State<MyEvent> {
   }
 
   String GetVendorCompanyName(String VendorID) {
-    var url = "http://18.135.170.140/companyName/?id=${VendorID}";
+    var url = "https://api.eventinz.com/companyName/?id=${VendorID}";
     final uri = Uri.parse(url);
     final body = '';
     final response = http.get(uri).then((value) => body == value.body);
@@ -190,25 +201,36 @@ class _MyEventState extends State<MyEvent> {
                                         child: Text("Show Archieved Events")),
                                   ),
                                   Gap(20),
+                                  EventList.isEmpty
+                                      ? Container(
+                                          child: Text("Empty"),
+                                        )
+                                      : ListView.builder(
+                                          scrollDirection: Axis.vertical,
+                                          shrinkWrap: true,
+                                          physics:
+                                              NeverScrollableScrollPhysics(),
+                                          itemCount: EventList.length,
+                                          itemBuilder: (BuildContext context,
+                                              int index) {
+                                            return Container(
+                                              padding: EdgeInsets.all(4),
+                                              child: EventCardMyEvents(
+                                                  VendorID: "12",
+                                                  Message: "Message",
+                                                  event_type: "event_type",
+                                                  status: EventList[index]
+                                                          ['status']
+                                                      .toString()
+                                                      .toUpperCase(),
+                                                  number_of_guest:
+                                                      "number_of_guest",
+                                                  Quote_Date: "Quote_Date",
+                                                  created_at: "2"),
+                                            );
+                                          },
+                                        ),
                                   // Text("Hello"),
-                                  EventCardMyEvents(
-                                      VendorID: "12",
-                                      Message: "Message",
-                                      event_type: "event_type",
-                                      status: "status",
-                                      number_of_guest: "number_of_guest",
-                                      Quote_Date: "Quote_Date",
-                                      created_at: "2"),
-                                  Gap(20),
-                                  // Text("Hello"),
-                                  EventCardMyEvents(
-                                      VendorID: "12",
-                                      Message: "Message",
-                                      event_type: "event_type",
-                                      status: "status",
-                                      number_of_guest: "number_of_guest",
-                                      Quote_Date: "Quote_Date",
-                                      created_at: "2"),
                                 ],
                               ),
                             ),
