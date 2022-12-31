@@ -10,7 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class EventDetails extends StatefulWidget {
-  const EventDetails({Key? key}) : super(key: key);
+  final String first_name;
+  final String last_name;
+  final String event_type;
+  final String event_desc;
+  final String event_date;
+  final String created_on;
+  const EventDetails(
+      {Key? key,
+      required this.event_type,
+      required this.first_name,
+      required this.last_name,
+      required this.event_desc,
+      required this.event_date,
+      required this.created_on})
+      : super(key: key);
 
   @override
   _EventDetailsState createState() => _EventDetailsState();
@@ -60,7 +74,14 @@ class _EventDetailsState extends State<EventDetails> {
 
   List<Widget> screens() {
     return [
-      EventDetailsBody(),
+      EventDetailsBody(
+          event_type: widget.event_type,
+          first_name: widget.first_name,
+          last_name: widget.last_name,
+          event_desc: widget.event_desc,
+          event_date: widget.event_date,
+          created_on: widget.created_on),
+
       UserStatistics(),
       UserStatistics(),
       // SupportPage(),

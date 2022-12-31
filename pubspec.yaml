@@ -48,9 +48,10 @@ dependencies:
   
   get_storage:
 
-  intl: ^0.18.0
+  intl: ^0.17.0
   json_serializable: ^6.5.4
   flutter_expandable_fab: ^1.6.1
+  currency_converter: ^0.0.3
 
 
 dev_dependencies:

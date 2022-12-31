@@ -42,6 +42,7 @@ class _MyEventState extends State<MyEvent> {
   List<dynamic> Quotes = [];
   List<dynamic> EventData = [];
   List<dynamic> EventList = [];
+
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
     // debugPrint("PRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINT");
@@ -76,7 +77,7 @@ class _MyEventState extends State<MyEvent> {
         // Quotes = json["quote"];
         EventData = json['event_data'];
         EventList = eventDataResponseJSON['event_data'];
-
+        users = eventDataResponseJSON['data'];
         // FName = json['data'][0]['fname'];
         // LName = json['data'][0]['lname'][0];
         // String date = json['data'][0]['created_on'];
@@ -229,7 +230,33 @@ class _MyEventState extends State<MyEvent> {
                                                     PersistentNavBarNavigator
                                                         .pushNewScreen(context,
                                                             screen:
-                                                                EventDetails(),
+                                                                EventDetails(
+                                                              event_type: EventList[
+                                                                          index]
+                                                                      [
+                                                                      'ev_name']
+                                                                  .toString(),
+                                                              first_name:
+                                                                  users[0]
+                                                                      ['fname'],
+                                                              last_name:
+                                                                  users[0]
+                                                                      ['lname'],
+                                                              event_desc: EventList[
+                                                                          index]
+                                                                      [
+                                                                      'Event_Desc']
+                                                                  .toString(),
+                                                              event_date: EventList[
+                                                                          index]
+                                                                      ['DOE']
+                                                                  .toString(),
+                                                              created_on: EventList[
+                                                                          index]
+                                                                      [
+                                                                      'created_on']
+                                                                  .toString(),
+                                                            ),
                                                             withNavBar: false,
                                                             pageTransitionAnimation:
                                                                 PageTransitionAnimation

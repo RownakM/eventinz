@@ -4,9 +4,24 @@ import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 import 'package:eventinz/view/custom_widgets/event_badge.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 class EventDetailsBody extends StatefulWidget {
-  const EventDetailsBody({Key? key}) : super(key: key);
+  final String first_name;
+  final String last_name;
+  final String event_type;
+  final String event_desc;
+  final String event_date;
+  final String created_on;
+  const EventDetailsBody(
+      {Key? key,
+      required this.event_type,
+      required this.first_name,
+      required this.last_name,
+      required this.event_desc,
+      required this.event_date,
+      required this.created_on})
+      : super(key: key);
 
   @override
   _EventDetailsBodyState createState() => _EventDetailsBodyState();
@@ -45,7 +60,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Social Event",
+                            "${widget.event_type}",
                             style: regular.copyWith(
                                 color: Colors.white, fontSize: 25),
                           ),
@@ -148,7 +163,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                       CircleAvatar(
                         backgroundColor: primaryColor,
                         child: Text(
-                          "R",
+                          "${widget.first_name[0]}",
                           style: regular.copyWith(
                               fontSize: 15,
                               color: Colors.white,
@@ -157,7 +172,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                       ),
                       Gap(10),
                       Text(
-                        "Rownak M",
+                        "${widget.first_name} ${widget.last_name[0]}",
                         style: regular.copyWith(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
@@ -179,7 +194,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                               ),
                               Gap(10),
                               Text(
-                                "Oct 23 2022 11:45 am",
+                                "${DateFormat("dd MMMM yyyy").format(DateTime.parse(widget.created_on))}",
                                 style: regular.copyWith(
                                     color: Colors.grey.shade400),
                               )
@@ -195,7 +210,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                               ),
                               Gap(10),
                               Text(
-                                "Oct 16 2022",
+                                "${DateFormat("dd MMMM yyyy").format(DateTime.parse(widget.event_date))}",
                                 style: regular.copyWith(
                                     color: Colors.grey.shade400),
                               )
@@ -237,7 +252,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                   ),
                   Gap(23),
                   Text(
-                    "Desc Here...",
+                    "${widget.event_desc}",
                     style: regular.copyWith(
                         fontSize: 14, fontWeight: FontWeight.w400),
                   ),
@@ -247,7 +262,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                       EventBadge(
                         badge_title: "Jewelry",
                       ),
-                      Gap(3),
+                      Gap(5),
                       EventBadge(
                         badge_title: "Fashion",
                       )
