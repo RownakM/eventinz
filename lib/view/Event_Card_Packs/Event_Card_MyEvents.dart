@@ -1,5 +1,5 @@
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
-import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
@@ -14,9 +14,13 @@ class EventCardMyEvents extends StatelessWidget {
 
   final String Quote_Date;
   final String created_at;
+  final String event_id;
 
+  final String money;
   const EventCardMyEvents({
     Key? key,
+    required this.money,
+    required this.event_id,
     required this.VendorID,
     required this.Message,
     required this.event_type,
@@ -168,7 +172,7 @@ class EventCardMyEvents extends StatelessWidget {
                           color: Color(0xFF525252),
                         ),
                         Gap(5),
-                        Text("MOney"),
+                        Text("${money}"),
                       ],
                     ),
                   ),
@@ -198,7 +202,7 @@ class EventCardMyEvents extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "#198",
+                    "#${event_id}",
                     style: TitleFont.copyWith(
                         color: Colors.grey.shade300, fontSize: 34),
                   ),
