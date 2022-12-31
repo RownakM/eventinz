@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:colorful_safe_area/colorful_safe_area.dart';
+import 'package:eventinz/ENV_VARIABLES/environment_variables.dart';
 import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
 import 'package:eventinz/view/Screens/user_dashboard_main.dart';
 import 'package:get_storage/get_storage.dart';
@@ -176,8 +177,7 @@ class _StartState extends State<Start> {
   }
 
   void userLogin(String Username, String Password) async {
-    var url =
-        "https://api.eventinz.com/checkUsers/?email=${Username}&password=${Password}";
+    var url = hostURL + "/checkUsers/?email=${Username}&password=${Password}";
     print(url);
     final uri = Uri.parse(url);
     final response = await http.get(uri);

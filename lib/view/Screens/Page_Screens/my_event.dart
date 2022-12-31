@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:eventinz/ENV_VARIABLES/environment_variables.dart';
 import 'package:eventinz/view/Child_Screens/footer.dart';
 import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
 import 'package:eventinz/view/Event_Card_Packs/Event_Card_MyEvents.dart';
@@ -44,15 +45,14 @@ class _MyEventState extends State<MyEvent> {
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
     // debugPrint("PRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINT");
-    var url =
-        "https://api.eventinz.com/userData/?email=${Username}&password=eventinz";
+    var url = hostURL + "/userData/?email=${Username}&password=eventinz";
     var uri = Uri.parse(url);
     final response = await http.get(uri);
     debugPrint(url);
     final body = response.body;
     final json = jsonDecode(body);
 
-    var eventDataURL = "https://api.eventinz.com/eventData/?email=${Username}";
+    var eventDataURL = hostURL + "/eventData/?email=${Username}";
     uri = Uri.parse(eventDataURL);
     final eventDataResponse = await http.get(uri);
     final eventDataResponseBody = eventDataResponse.body;
@@ -93,7 +93,7 @@ class _MyEventState extends State<MyEvent> {
   }
 
   String GetVendorCompanyName(String VendorID) {
-    var url = "https://api.eventinz.com/companyName/?id=${VendorID}";
+    var url = hostURL + "/companyName/?id=${VendorID}";
     final uri = Uri.parse(url);
     final body = '';
     final response = http.get(uri).then((value) => body == value.body);

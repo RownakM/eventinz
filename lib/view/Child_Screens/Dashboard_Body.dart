@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:eventinz/ENV_VARIABLES/environment_variables.dart';
 import 'package:eventinz/view/Child_Screens/footer.dart';
 import 'package:eventinz/view/Event_Card_Packs/Quote_Request_Card.dart';
 import 'package:intl/intl.dart';
@@ -45,7 +46,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   List<dynamic> EventData = [];
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
-    var url = "https://api.eventinz.com/userData/?email=${Username}";
+    var url = hostURL + "/userData/?email=${Username}";
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     debugPrint(url);
@@ -89,7 +90,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   }
 
   String GetVendorCompanyName(String VendorID) {
-    var url = "https://api.eventinz.com/companyName/?id=${VendorID}";
+    var url = hostURL + "/companyName/?id=${VendorID}";
     final uri = Uri.parse(url);
     final body = '';
     final response = http.get(uri).then((value) => body == value.body);
