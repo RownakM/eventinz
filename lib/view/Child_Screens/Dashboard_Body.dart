@@ -1,13 +1,14 @@
 import 'dart:convert';
-import 'package:eventinz/Event_Card_Packs/Quote_Request_Card.dart';
+import 'package:eventinz/view/Child_Screens/footer.dart';
+import 'package:eventinz/view/Event_Card_Packs/Quote_Request_Card.dart';
 import 'package:intl/intl.dart';
 
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
-import 'package:eventinz/Event_Card_Packs/event_cards_index.dart';
-import 'package:eventinz/Services/get.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/Event_Card_Packs/event_cards_index.dart';
+import 'package:eventinz/view/Services/get.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 
 import 'package:eventinz/start.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   List<dynamic> EventData = [];
   final session = GetStorage();
   void makeRequestUsingHttp(String Username) async {
-    var url =
-        "http://18.135.170.140/userData/?email=${Username}&password=eventinz";
+    var url = "https://api.eventinz.com/userData/?email=${Username}";
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     debugPrint(url);
@@ -79,7 +79,7 @@ class _DashboardBodyState extends State<DashboardBody> {
           profile_img =
               "https://eventinz.com/static/main_home1/assets/images/logo-footer.png";
         } else {
-          profile_img = "https://eventinz.com/media/" + profile_img;
+          profile_img = "https://eventinz.com" + profile_img;
         }
         ImageURL = profile_img;
       });
@@ -89,7 +89,7 @@ class _DashboardBodyState extends State<DashboardBody> {
   }
 
   String GetVendorCompanyName(String VendorID) {
-    var url = "http://18.135.170.140/companyName/?id=${VendorID}";
+    var url = "https://api.eventinz.com/companyName/?id=${VendorID}";
     final uri = Uri.parse(url);
     final body = '';
     final response = http.get(uri).then((value) => body == value.body);
@@ -413,7 +413,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                           EdgeInsets.symmetric(vertical: 4),
                                       child: QuoteRequestCard(
                                         VendorID: Quotes[index]["vendor_id"]
-                                                ['company_name']
+                                                ['Company_Name']
                                             .toString(),
                                         Message: Quotes[index]["msg"],
                                         event_type: Quotes[index]['event_type'],
@@ -425,7 +425,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                                       ),
                                     );
                                   },
-                                  itemCount: 3,
+                                  itemCount: Quotes.length,
                                 )
                         ],
                       ),
@@ -501,25 +501,7 @@ class _DashboardBodyState extends State<DashboardBody> {
                       ),
                     ),
                     Gap(30),
-                    Center(
-                      child: Container(
-                          child: Image.network(
-                        "https://eventinz.com/static/main_home1/assets/images/logo-desktop.png",
-                        color: Color.fromRGBO(255, 255, 255, 0.2),
-                        width: 120,
-                        colorBlendMode: BlendMode.modulate,
-                      )),
-                    ),
-                    Gap(10),
-                    Center(
-                      child: Container(
-                          child: Text(
-                        "© Eventinz - ITTIQ | Canada",
-                        style: Heading.copyWith(
-                            color: Color.fromRGBO(0, 0, 0, 0.2),
-                            fontWeight: FontWeight.bold),
-                      )),
-                    ),
+                    Footer(),
                     Gap(30)
                   ],
                 ),

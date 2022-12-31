@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:eventinz/Child_Screens/Dashboard_Body.dart';
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/Child_Screens/Dashboard_Body.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
 
-import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';

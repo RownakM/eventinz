@@ -1,7 +1,7 @@
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
-import 'package:eventinz/Screens/Page_Screens/dashboard.dart';
-import 'package:eventinz/Screens/splash.dart';
-import 'package:eventinz/Screens/user_dashboard_main.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/Screens/Page_Screens/dashboard.dart';
+import 'package:eventinz/view/Screens/splash.dart';
+import 'package:eventinz/view/Screens/user_dashboard_main.dart';
 
 import 'package:eventinz/start.dart';
 // import 'package:eventinz/storage/StorageItem.dart';

@@ -1,5 +1,5 @@
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
-import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -38,7 +38,7 @@ class EventCardsIndex extends StatelessWidget {
               child: Text(
                 Count,
                 style: TitleFont.copyWith(
-                    fontWeight: FontWeight.normal, fontSize: 19),
+                    fontWeight: FontWeight.normal, fontSize: 15),
               ),
             ),
             Gap(20),

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:colorful_safe_area/colorful_safe_area.dart';
-import 'package:eventinz/Color_Scheme/eventinz_colors.dart';
-import 'package:eventinz/Screens/user_dashboard_main.dart';
+import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
+import 'package:eventinz/view/Screens/user_dashboard_main.dart';
 import 'package:get_storage/get_storage.dart';
 // import 'package:eventinz/storage/StorageItem.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:eventinz/custom_fonts/custom_fonts.dart';
+import 'package:eventinz/view/custom_fonts/custom_fonts.dart';
 import 'package:eventinz/main.dart';
 
 import 'package:flutter/material.dart';
@@ -54,7 +54,12 @@ class _StartState extends State<Start> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Gap(105),
+                  Gap(30),
+                  Image.network(
+                    "https://eventinz.com/static/main_home1/assets/images/logo-desktop.png",
+                    width: 150,
+                  ),
+                  Gap(45),
                   Text(
                     "Sign In",
                     style: TitleFont,
@@ -172,7 +177,7 @@ class _StartState extends State<Start> {
 
   void userLogin(String Username, String Password) async {
     var url =
-        "http://18.135.170.140/checkUsers/?email=${Username}&password=${Password}";
+        "https://api.eventinz.com/checkUsers/?email=${Username}&password=${Password}";
     print(url);
     final uri = Uri.parse(url);
     final response = await http.get(uri);
