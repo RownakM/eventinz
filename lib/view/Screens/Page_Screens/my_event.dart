@@ -12,6 +12,8 @@ import 'package:eventinz/view/Event_Card_Packs/event_cards_index.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:eventinz/view/Child_Screens/Event_Details.dart';
 
 class MyEvent extends StatefulWidget {
   final userName;
@@ -222,30 +224,43 @@ class _MyEventState extends State<MyEvent> {
                                                 int index) {
                                               return Container(
                                                 padding: EdgeInsets.all(4),
-                                                child: EventCardMyEvents(
-                                                    money: EventList[index]
-                                                                    ['Budget'][
-                                                                'Minimum_Value']
-                                                            .toString() +
-                                                        ' - ' +
-                                                        EventList[index]['Budget'][
-                                                                'Maximum_Value']
-                                                            .toString(),
-                                                    event_id: EventList[index]
-                                                            ['id']
-                                                        .toString(),
-                                                    VendorID: EventList[index]
-                                                            ['ev_name']
-                                                        .toString(),
-                                                    Message: "Message",
-                                                    event_type: "event_type",
-                                                    status: EventList[index]
-                                                            ['status']
-                                                        .toString()
-                                                        .toUpperCase(),
-                                                    number_of_guest: "number_of_guest",
-                                                    Quote_Date: "Quote_Date",
-                                                    created_at: "2"),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    PersistentNavBarNavigator
+                                                        .pushNewScreen(context,
+                                                            screen:
+                                                                EventDetails(),
+                                                            withNavBar: false,
+                                                            pageTransitionAnimation:
+                                                                PageTransitionAnimation
+                                                                    .cupertino);
+                                                  },
+                                                  child: EventCardMyEvents(
+                                                      money: EventList[index]
+                                                                      ['Budget']
+                                                                  [
+                                                                  'Minimum_Value']
+                                                              .toString() +
+                                                          ' - ' +
+                                                          EventList[index]['Budget']['Maximum_Value']
+                                                              .toString(),
+                                                      event_id: EventList[index]
+                                                              ['id']
+                                                          .toString(),
+                                                      VendorID: EventList[index]
+                                                              ['ev_name']
+                                                          .toString(),
+                                                      Message: "Message",
+                                                      event_type: "event_type",
+                                                      status: EventList[index]
+                                                              ['status']
+                                                          .toString()
+                                                          .toUpperCase(),
+                                                      number_of_guest:
+                                                          "number_of_guest",
+                                                      Quote_Date: "Quote_Date",
+                                                      created_at: "2"),
+                                                ),
                                               );
                                             },
                                           ),
