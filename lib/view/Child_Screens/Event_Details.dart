@@ -18,6 +18,7 @@ class EventDetails extends StatefulWidget {
   final String event_desc;
   final String event_date;
   final String created_on;
+  final String vendor_type;
   const EventDetails(
       {Key? key,
       required this.event_type,
@@ -25,7 +26,8 @@ class EventDetails extends StatefulWidget {
       required this.last_name,
       required this.event_desc,
       required this.event_date,
-      required this.created_on})
+      required this.created_on,
+      required this.vendor_type})
       : super(key: key);
 
   @override
@@ -77,12 +79,14 @@ class _EventDetailsState extends State<EventDetails> {
   List<Widget> screens() {
     return [
       EventDetailsBody(
-          event_type: widget.event_type,
-          first_name: widget.first_name,
-          last_name: widget.last_name,
-          event_desc: widget.event_desc,
-          event_date: widget.event_date,
-          created_on: widget.created_on),
+        event_type: widget.event_type,
+        first_name: widget.first_name,
+        last_name: widget.last_name,
+        event_desc: widget.event_desc,
+        event_date: widget.event_date,
+        created_on: widget.created_on,
+        vendor_type: widget.vendor_type,
+      ),
 
       EventDetailsProposals(
         event_type: widget.event_type,

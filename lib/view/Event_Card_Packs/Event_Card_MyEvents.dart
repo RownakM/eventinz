@@ -83,35 +83,35 @@ class EventCardMyEvents extends StatelessWidget {
                               color: primaryColor, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Gap(4),
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(3)),
-                          border: Border.all(width: 1, color: primaryColor),
-                        ),
-                        child: Text(
-                          "${event_type}",
-                          style: TextFont.copyWith(
-                              color: primaryColor, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Gap(4),
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(3)),
-                          border: Border.all(width: 1, color: primaryColor),
-                        ),
-                        child: Text(
-                          "${event_type}",
-                          style: TextFont.copyWith(
-                              color: primaryColor, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Gap(4),
+                      // Gap(4),
+                      // Container(
+                      //   padding:
+                      //       EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.all(Radius.circular(3)),
+                      //     border: Border.all(width: 1, color: primaryColor),
+                      //   ),
+                      //   child: Text(
+                      //     "${event_type}",
+                      //     style: TextFont.copyWith(
+                      //         color: primaryColor, fontWeight: FontWeight.bold),
+                      //   ),
+                      // ),
+                      // Gap(4),
+                      // Container(
+                      //   padding:
+                      //       EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.all(Radius.circular(3)),
+                      //     border: Border.all(width: 1, color: primaryColor),
+                      //   ),
+                      //   child: Text(
+                      //     "${event_type}",
+                      //     style: TextFont.copyWith(
+                      //         color: primaryColor, fontWeight: FontWeight.bold),
+                      //   ),
+                      // ),
+                      // Gap(4),
                     ],
                   ),
                 ],

@@ -42,8 +42,27 @@ class _MyEventState extends State<MyEvent> {
   List<dynamic> Quotes = [];
   List<dynamic> EventData = [];
   List<dynamic> EventList = [];
+  List<dynamic> VendorCategory = [];
 
   final session = GetStorage();
+  String GetVendorCategory(String id) {
+    var name = '';
+    print("ID");
+    print(id);
+    print("ID");
+
+    for (var i = 0; i < VendorCategory.length; i++) {
+      print(VendorCategory[i]['id']);
+      if (VendorCategory[i]['id'].toString() == id) {
+        name = VendorCategory[i]['category_name'];
+        break;
+      } else {
+        continue;
+      }
+    }
+    return name;
+  }
+
   void makeRequestUsingHttp(String Username) async {
     // debugPrint("PRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINTPRINT");
     var url = hostURL + "/userData/?email=${Username}&password=eventinz";
@@ -78,6 +97,7 @@ class _MyEventState extends State<MyEvent> {
         EventData = json['event_data'];
         EventList = eventDataResponseJSON['event_data'];
         users = eventDataResponseJSON['data'];
+        VendorCategory = eventDataResponseJSON['vendor_category'];
         // FName = json['data'][0]['fname'];
         // LName = json['data'][0]['lname'][0];
         // String date = json['data'][0]['created_on'];
@@ -227,6 +247,7 @@ class _MyEventState extends State<MyEvent> {
                                                 padding: EdgeInsets.all(4),
                                                 child: GestureDetector(
                                                   onTap: () {
+                                                    GetVendorCategory("12");
                                                     PersistentNavBarNavigator
                                                         .pushNewScreen(context,
                                                             screen:
@@ -256,6 +277,11 @@ class _MyEventState extends State<MyEvent> {
                                                                       [
                                                                       'created_on']
                                                                   .toString(),
+                                                              vendor_type: GetVendorCategory(
+                                                                  EventList[index]
+                                                                          [
+                                                                          'vendor_type']
+                                                                      .toString()),
                                                             ),
                                                             withNavBar: false,
                                                             pageTransitionAnimation:
@@ -263,29 +289,27 @@ class _MyEventState extends State<MyEvent> {
                                                                     .cupertino);
                                                   },
                                                   child: EventCardMyEvents(
-                                                      money: EventList[index]
-                                                                      ['Budget']
-                                                                  [
-                                                                  'Minimum_Value']
+                                                      money: EventList[index]['Budget']['Minimum_Value']
                                                               .toString() +
                                                           ' - ' +
                                                           EventList[index]['Budget']['Maximum_Value']
                                                               .toString(),
-                                                      event_id: EventList[index]
-                                                              ['id']
+                                                      event_id: EventList[index]['id']
                                                           .toString(),
                                                       VendorID: EventList[index]
                                                               ['ev_name']
                                                           .toString(),
-                                                      Message: "Message",
-                                                      event_type: "event_type",
+                                                      Message:
+                                                          "${EventList[index]['Event_Desc']}",
+                                                      event_type: GetVendorCategory(
+                                                          EventList[index]['vendor_type']
+                                                              .toString()),
                                                       status: EventList[index]
                                                               ['status']
                                                           .toString()
                                                           .toUpperCase(),
-                                                      number_of_guest:
-                                                          "number_of_guest",
-                                                      Quote_Date: "Quote_Date",
+                                                      number_of_guest: "number_of_guest",
+                                                      Quote_Date: "${EventList[index]['DOE']}",
                                                       created_at: "2"),
                                                 ),
                                               );

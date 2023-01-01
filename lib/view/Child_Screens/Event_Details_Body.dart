@@ -15,6 +15,7 @@ class EventDetailsBody extends StatefulWidget {
   final String event_desc;
   final String event_date;
   final String created_on;
+  final String vendor_type;
   const EventDetailsBody(
       {Key? key,
       required this.event_type,
@@ -22,7 +23,8 @@ class EventDetailsBody extends StatefulWidget {
       required this.last_name,
       required this.event_desc,
       required this.event_date,
-      required this.created_on})
+      required this.created_on,
+      required this.vendor_type})
       : super(key: key);
 
   @override
@@ -86,12 +88,8 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
                   Row(
                     children: [
                       EventBadge(
-                        badge_title: "Jewelry",
+                        badge_title: "${widget.vendor_type}",
                       ),
-                      Gap(5),
-                      EventBadge(
-                        badge_title: "Fashion",
-                      )
                     ],
                   )
                 ],
