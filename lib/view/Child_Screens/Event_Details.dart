@@ -1,4 +1,6 @@
 import 'package:eventinz/view/Child_Screens/Event_Details_Body.dart';
+import 'package:eventinz/view/Child_Screens/Event_Details_Payments.dart';
+import 'package:eventinz/view/Child_Screens/Event_Details_Proposals.dart';
 import 'package:eventinz/view/Color_Scheme/eventinz_colors.dart';
 import 'package:eventinz/view/Screens/Page_Screens/chat_page.dart';
 import 'package:eventinz/view/Screens/Page_Screens/dashboard.dart';
@@ -82,8 +84,20 @@ class _EventDetailsState extends State<EventDetails> {
           event_date: widget.event_date,
           created_on: widget.created_on),
 
-      UserStatistics(),
-      UserStatistics(),
+      EventDetailsProposals(
+        event_type: widget.event_type,
+        first_name: widget.first_name,
+        last_name: widget.last_name,
+        event_date: widget.event_date,
+        created_on: widget.created_on,
+      ),
+      EventDetailsPayments(
+        first_name: widget.first_name,
+        last_name: widget.last_name,
+        event_date: widget.event_date,
+        created_on: widget.created_on,
+        event_type: widget.event_type,
+      )
       // SupportPage(),
       // ChatPage(),
     ];

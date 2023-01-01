@@ -52,6 +52,7 @@ dependencies:
   json_serializable: ^6.5.4
   flutter_expandable_fab: ^1.6.1
   currency_converter: ^0.0.3
+  expansion_tile_card: ^2.0.0
 
 
 dev_dependencies:
