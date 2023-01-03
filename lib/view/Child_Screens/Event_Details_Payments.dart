@@ -9,14 +9,15 @@ class EventDetailsPayments extends StatefulWidget {
   final String last_name;
   final String event_date;
   final String created_on;
-
+  final String heads;
   const EventDetailsPayments(
       {Key? key,
       required this.event_type,
       required this.first_name,
       required this.created_on,
       required this.last_name,
-      required this.event_date})
+      required this.event_date,
+      required this.heads})
       : super(key: key);
 
   @override
@@ -41,6 +42,7 @@ class _EventDetailsPaymentsState extends State<EventDetailsPayments> {
               last_name: widget.last_name,
               created_on: widget.created_on,
               event_date: widget.event_date,
+              heads: widget.heads,
             ),
             Gap(10),
             Footer()

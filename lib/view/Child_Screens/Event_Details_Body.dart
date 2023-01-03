@@ -16,6 +16,7 @@ class EventDetailsBody extends StatefulWidget {
   final String event_date;
   final String created_on;
   final String vendor_type;
+  final String heads;
   const EventDetailsBody(
       {Key? key,
       required this.event_type,
@@ -24,7 +25,8 @@ class EventDetailsBody extends StatefulWidget {
       required this.event_desc,
       required this.event_date,
       required this.created_on,
-      required this.vendor_type})
+      required this.vendor_type,
+      required this.heads})
       : super(key: key);
 
   @override
@@ -49,6 +51,7 @@ class _EventDetailsBodyState extends State<EventDetailsBody> {
             last_name: widget.last_name,
             created_on: widget.created_on,
             event_date: widget.event_date,
+            heads: widget.heads,
           ),
           Gap(30),
           Container(

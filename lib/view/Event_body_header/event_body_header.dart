@@ -13,6 +13,7 @@ class EventBodyHeader extends StatefulWidget {
   final String last_name;
   final String created_on;
   final String event_date;
+  final String heads;
   const EventBodyHeader(
       {Key? key,
       required this.event_type,
@@ -22,7 +23,8 @@ class EventBodyHeader extends StatefulWidget {
       required this.first_name,
       required this.last_name,
       required this.created_on,
-      required this.event_date})
+      required this.event_date,
+      required this.heads})
       : super(key: key);
 
   @override
@@ -73,7 +75,7 @@ class _EventBodyHeaderState extends State<EventBodyHeader> {
                                 ),
                                 alignment: PlaceholderAlignment.middle),
                             TextSpan(
-                                text: "500-599",
+                                text: "${widget.heads}",
                                 style: regular.copyWith(fontSize: 15))
                           ]))
                         ],
