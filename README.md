@@ -113,6 +113,7 @@ For Usage , Refer to the details below
 | `base_currency`      | `string` | **Required** - Currency ISO Format. Eg: USD |
 | `final_currency`      | `string` | **Required** - Currency ISO Format. Eg: INR |
 
+---
 
 ### Create Event - Create New User
 
