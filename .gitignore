@@ -43,3 +43,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /lib/ENV_VARIABLES/
+
+/old/
