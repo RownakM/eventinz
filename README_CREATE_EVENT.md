@@ -97,7 +97,7 @@
 ---
 ### Note : **No Event Data is passed to the server untill , payment made is successfull**.
 
-### Payment Gateways
+### <ins>Payment Gateways</ins>
 - Paypal (Available World-Wide)
 - MoMo **( Available only in Benin )**
 - Moove **( Available only in Benin )**
