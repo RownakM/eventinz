@@ -48,10 +48,10 @@ For Usage , Refer to the details below
 ### API Headers (To Be Passed on each request)
 
 
-| Header | Type     | Description                       |
+| Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `Userid`      | `string` | **Required** (Test userID : 6a3b0dff-9496-4c82-a49f-0d688cb1c0c5	) |
-| `apiKey`      | `string` | **Required** (Test API Key : af5ffb60-0e4d-4a67-9d0d-18e6e0a5679b	)|
+| `Userid`      | `string` | **Required** (Test **userID : 6a3b0dff-9496-4c82-a49f-0d688cb1c0c5**	) |
+| `apiKey`      | `string` | **Required** (Test **API Key : af5ffb60-0e4d-4a67-9d0d-18e6e0a5679b**	)|
 
 ---
 
