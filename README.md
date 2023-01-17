@@ -56,7 +56,7 @@ For Usage , Refer to the details below
 
 #### Check Server Uptime
 
-```http
+```
   GET BASE_URL
 ```
 
@@ -64,7 +64,7 @@ For Usage , Refer to the details below
 
 #### Authenticate User Login
 
-```http
+```
   GET /auth-user/
 ```
 
@@ -80,7 +80,7 @@ For Usage , Refer to the details below
 
 #### Get User Data (Dashboard Purpose)
 
-```http
+```
   GET /userData/
 ```
 
@@ -92,10 +92,8 @@ For Usage , Refer to the details below
 
 ### Get Event Data (My Event Screen)
 
-```http
-
+```
   GET /eventData/
-
 ```
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
@@ -105,8 +103,7 @@ For Usage , Refer to the details below
 
 ### Currency Convert
 
-```http
-
+```
   POST /convert-currency/{amount}/{base_currency}/{final_currency}
 ```
 
@@ -123,7 +120,7 @@ For Usage , Refer to the details below
 
 ### Check Active Users
 
-```http
+```
   GET /event-check-users/{email}/
 ```
 
