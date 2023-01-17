@@ -98,7 +98,27 @@
 ### Note : **No Event Data is passed to the server untill , payment made is successfull**.
 
 ### <ins>Payment Gateways</ins>
-- Paypal (Available World-Wide)
-- MoMo **( Available only in Benin )**
-- Moove **( Available only in Benin )**
+- <img src="https://cdn-icons-png.flaticon.com/512/174/174861.png" width="15" height="15"> Paypal (Available World-Wide - USD Currency Only )
+
+- <img src="https://blog.ussd.directory/content/images/2022/07/MTN-1.jpg" width="15" height="15"> MoMo **( Available only in Benin - FCFA Currency Only )**
+- <img src="https://play-lh.googleusercontent.com/abIwBzGTucbPNRDtFaovqR8bl39QznwWN6gCmBovKhNTLip0j6SmejSjAlTzg37BeE0" width="15" height="15"> Moove **( Available only in Benin - FCFA Currency Only )**
+
+
+### Note : 
+- For **Freemium** Events, No Payment is required
+- For **Premium** Events , Payment is required only when no subscription is found. Can be checked with the **Endpoints** given below.
+
+---
+
+### Step 4.1 | Review 
+---
+**This Section is meant for the users to review the data they have input. So , at this stage , all the input should be fetched and displayed in correct format. They Should Have an Option to Edit at this stage**.
+
+*At This Stage , User is required to select Package Type - Freemium or Premium and the vendor Category*
+
+- For **Freemium** Packages
+  - Only ONE (1) **Vendor Category** can be chosen
+- For **Premium** Packages
+  - Unlimited **Vendor Category** can be chosen as long as subscription is valid.
+
 
