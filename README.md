@@ -41,7 +41,7 @@ For Usage , Refer to the details below
 
 ### API Variables : 
 
-```http
+```
   BASE_URL = https://api.eventinz.com
 ```
 ### API Headers (To Be Passed on each request)
