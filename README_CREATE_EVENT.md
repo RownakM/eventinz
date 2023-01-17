@@ -145,3 +145,105 @@
   - Unlimited **Vendor Category** can be chosen as long as subscription is valid.
 
 
+---
+### Step 4.2 | Payment
+---
+
+**API Endpoint**
+
+---
+### Initiate MoMo Payment Request
+---
+
+```
+  POST /momo-payment/{amount}/{mobile}/{currency}
+```
+
+| parameters | description | required |
+|------------|------|----------|
+| amount    |  request amount    |    Yes      |
+| mobile    |  MoMo Registered Mobile Number (with ISD code , eg : 229 for Benin)    |    Yes      |
+| currency    |  amount currency ( USE **XOF** )    |    Yes      |
+
+---
+
+### Check MoMo Payment Status
+
+
+| parameters | description | required |
+|------------|------|----------|
+| payment_x_ref_id    |  Payment X-Ref-ID    |    Yes      |
+| access_token    |  Access Token    |    Yes      |
+
+
+### Note : <ins>**payment_x_ref_id**</ins> & <ins>**access_token**</ins> are returned from the server when MoMo Payment is Initiated.
+
+---
+
+### Initiate Moove Payment
+
+```
+  POST /moove-payment/{amount}/{mobile}/
+```
+
+| parameters | description | required |
+|------------|------|----------|
+| amount    |  request amount    |    Yes      |
+| mobile    |  MoMo Registered Mobile Number (with ISD code , eg : 229 for Benin)    |    Yes      |
+
+### Check Moove Payment Status
+```
+  POST moov-payment/{xid}/payment/check/
+```
+
+| parameters | description | required |
+|------------|------|----------|
+| xid    |  recieved auth_key    |    Yes      |
+
+
+
+
+---
+### Save Event Data to Database (After Successfull Transaction)
+---
+
+```
+  POST save-event-data/
+```
+
+| parameter   | required |
+|-------------|----------|
+| vendor_type | YES      |
+| package_type | YES      |
+| get_ev_name | YES      |
+| create_event_country | YES      |
+| create_event_state | YES      |
+| create_event_city | YES      |
+| create_event_event_category | YES      |
+| create_event_event_sub_category | YES      |
+| create_event_heads | YES      |
+| create_event_ev_date | YES      |
+| create_event_budget | YES      |
+| create_event_first_name | YES      |
+| create_event_last_name | YES      |
+| create_event_email_id | YES      |
+| create_event_phone | YES      |
+| create_event_country_code | YES      |
+| create_event_ev_desc | YES      |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
