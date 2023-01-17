@@ -71,7 +71,7 @@
 
 ### Once , the OTP is verified , next step is to check , whether the input **EMAIL** exists in the Database. If Not , the system will ask the user to **Create A New Password** >> Else **Verify Themselves with the existing password**
 
-**SEE API ENDPOINTS BELOW**
+**SEE API ENDPOINT BELOW**
 
 
 ```
@@ -90,3 +90,15 @@
 
 - Case B ( **Authenticate Existing Password** )
   - Depending upon the user status recieved , If the user exists , it will ask to **Authenticate Existing Password**
+
+
+---
+## Step 4 | Review & Payment
+---
+### Note : **No Event Data is passed to the server untill , payment made is successfull**.
+
+### Payment Gateways
+- Paypal (Available World-Wide)
+- MoMo **( Available only in Benin )**
+- Moove **( Available only in Benin )**
+
