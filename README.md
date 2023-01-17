@@ -132,11 +132,11 @@ For Usage , Refer to the details below
 
 ##### If User do not exist
 
-![](https://i.ibb.co/WVv6f93/carbon-1.png)
+![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(1).png)
 
 ##### If User Exist
 
-![](https://i.ibb.co/pdHm9bx/carbon-2.png)
+![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(2).png)
 ---
 
 ### If User Exist
