@@ -46,37 +46,38 @@
 | email    |  email    |    Yes      |
 
 ---
-## Response
+## Response On Mail Sent
 ---
 
 ![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(3).png)
 
-#### For Create An Event - Page , A New User is only created , only when the input email is not found in the Database
+### The returned **auth_key** will be used to verify the entered OTP
 
-### Check Active Users
+### Verify OTP
 
 ```
-  GET /event-check-users/{email}/
+  POST /event-verify-otp/{auth_key}
 ```
 
-| URL Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `email`      | `string` | **Required** |
+| parameters | type | required |
+|------------|------|----------|
+| auth_key    |  auth_key recieved    |    Yes      |
+| otp    |  Input OTP    |    Yes      |
 
-#### Response
-
-##### If User do not exist
-
-![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(1).png)
-
-##### If User Exist
-
-![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(2).png)
 ---
 
-### If User Exist
-- App will ask user to verify themselves with the password
+## Response on OTP Verified
+---
 
-### If User Does Not Exist
-- App will ask the user to create a New Password and then should allow the user to continue.
+### Once , the OTP is verified , next step is to check , whether the input **EMAIL** exists in the Database. If Not , the system will ask the user to **Create A New Password** >> Else **Verify Themselves with the existing password**
+
+**SEE API ENDPOINTS BELOW**
+
+
+```
+  GET /event-check-users/{email}
+
+```
+
+**The Above URL** will return *True* , if the User exists in the Database. Else Will return *False*
 
