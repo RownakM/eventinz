@@ -30,6 +30,29 @@
 
 ---
 
+### API Endpoints
+---
+
+## Get Event Budget
+
+```
+  GET /budget/
+```
+
+## Get Event Category
+
+```
+  GET /event-categories/
+```
+
+## Get Event Sub Category
+
+```
+  GET /event-sub-categories/{event_id}/
+```
+| parameters | type | required |
+|------------|------|----------|
+| event_id    |  selected Event ID    |    Yes      |
 ### Action - On Submitting , data recieved from the above fields , should  be hold on a local storage . Hence , No Data is passed to the server
 ---
 ## Step 2 | Get Verified
