@@ -1,10 +1,10 @@
-# Create Event - Create New User
+# Create Event
 
 ## Create An Event - Steps
 
 - Event Information
 - Get Verified
-- Generate Password / Authenticate Password
+- Create New Password / Authenticate Password
 - Payment Option
 
 ---
@@ -81,3 +81,12 @@
 
 **The Above URL** will return *True* , if the User exists in the Database. Else Will return *False*
 
+---
+## Step 3 | Create New Password / Authenticate Password
+---
+
+- Case A ( **Create New Password** )
+  - Depending upon the user status recieved , If the user does not exists , it will ask for **New & Confirm Password**
+
+- Case B ( **Authenticate Existing Password** )
+  - Depending upon the user status recieved , If the user exists , it will ask to **Authenticate Existing Password**
