@@ -49,7 +49,7 @@
 ## Response
 ---
 
-![]()
+![](https://github.com/RownakM/eventinz/blob/master/readme_assets/carbon%20(3).png)
 
 #### For Create An Event - Page , A New User is only created , only when the input email is not found in the Database
 
