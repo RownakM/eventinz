@@ -1,3 +1,4 @@
+![](https://eventinz.com/static/main_home1/assets/images/logo-desktop.png)
 
 # Eventinz - An Event Management Platform
 
