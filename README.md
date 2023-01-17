@@ -1,3 +1,4 @@
+
 ![](https://eventinz.com/static/main_home1/assets/images/logo-desktop.png)
 
 # Eventinz - An Event Management Platform
@@ -27,3 +28,4 @@ This project is used by the following companies:
 
 ## API Reference
 
+- User Side API : [Click Here](https://github.com/RownakM/eventinz/blob/master/README_USER.md)
