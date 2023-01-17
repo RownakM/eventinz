@@ -1,0 +1,39 @@
+name: eventing
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.17.6 <3.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.5
+  sizer: ^2.0.15
+  google_fonts: any
+  country_phone_code_picker: ^0.0.41
+  intl_phone_field: ^3.1.0
+  country_state_city_picker: ^1.2.8
+  another_stepper: ^1.1.6
+
+
+
+
+
+
+  flutter: 
+    sdk: flutter
+
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+
+flutter:
+  assets:
+    - assets/images/
+    - assets/icons/
+  uses-material-design: true
+
+
+
