@@ -29,3 +29,4 @@ This project is used by the following companies:
 ## API Reference
 
 - User Side API : [Click Here](https://github.com/RownakM/eventinz/blob/master/README_USER.md)
+- Vendor Side API : [To Be Updated]()
